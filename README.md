@@ -50,7 +50,22 @@ http://hikarilist.yelardo.tech
 
 ### Una vez despleguemos la web, ya sea en local o desde la url, nos aparecerá lo siguiente:
 
-![miku](imagenes/47tj.gif)
+![inicio1](imagenes/inicio.PNG)
+
+### Una vez iniciemos sesión, o nos registremos por primera vez, le deberemos de dar al botón de comenzar:
+![inicio2](imagenes/Captura.PNG)
+
+### Esta es la página principal, donde tendremos siempre a nuestra disposición la barra de navegación, para movernos por la app, además de unas noticias destacadas de la semana y los animes mas destacados de ella.
+![principal](imagenes/principal.PNG)
+
+### También tendremos la barra de busqueda que nos permitirá buscar el anime que queramos 
+![busqueda](imagenes/buscador.PNG)
+
+###
+
+
+
+
 
  
 
