@@ -609,7 +609,7 @@ hikarilist.yelardo.tech/admin
 
 <br>
 
-# Despligue del proyecto 
+# Despliegue del proyecto 
 
 ## Cómo se ha realizado el despliegue:
 
