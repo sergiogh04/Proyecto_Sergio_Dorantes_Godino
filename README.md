@@ -161,6 +161,9 @@ http://hikarilist.yelardo.tech
 
 
 # Diseño de la web
+
+- Para el diseño de la web, he utilizado html, css, boostrap y javascript.
+
 <br>
 
 # Backend y panel de administrador
@@ -253,6 +256,8 @@ class UserAnime(models.Model):
 
 
 ````
+<br>
+
 ### Views:
 - Aquí esta la mayor parte de la lógica de la web, cómo funciona el sistema de biblioteca digital, el inicio de sesión, el buscado y la api para las notas medias de los animes.
 ```python
@@ -404,6 +409,8 @@ def all_anime_view(request):
 
 ````
 
+<br>
+
 ### URLS:
 
 ```python
@@ -417,6 +424,8 @@ urlpatterns = [
 ]
 
 ````
+
+<br>
 
 ### URLS APP:
 ```python
@@ -449,6 +458,9 @@ urlpatterns = [
 ]
 
 ````
+
+<br>
+
 ### FORMS:
 ```python
 from django import forms
@@ -467,6 +479,9 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
 ````
+
+<br>
+
 ### SIGNALS:
 ```python
 from django.db.models.signals import post_save
@@ -481,6 +496,9 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 
 ````
+
+<br>
+
 ### ADMIN:
 ```python
 from django.contrib import admin
@@ -514,6 +532,9 @@ admin.site.register(Genre)
 
 
 ````
+
+<br>
+
 ### API(SERIALIZERS):
 
 ```python
@@ -562,20 +583,41 @@ class AnimeSerializer(serializers.ModelSerializer):
 
 
 ````
+
+<br>
+
 ### PANEL DE ADMINISTRADOR:
 - Dede el panel de administrador puedo tener control total de todo lo que hacen los usuarios en mi web, además de crear nuevos registros y perfiles, la url para acceder al panel de administración es:
 ```python
 hikarilist.yelardo.tech/admin
 ````
+
+<br>
+
 - Una vez estamos dentro del panel de administración debemos iniciar sesión con un usuario con permisos de staff y veremos lo siguiente:
+
+<br>
+
 
  ![admin](imagenes/adming.PNG)
 
+<br>
+
+
  - Pulsando en anime veremos todos los animes que han sido creados con sus características propias.
+
+<br>
+
 
  ![adming](imagenes/animesadmin.PNG)
 
+<br>
+
+
  - Si pulsamos en añadir anime tendremos la siguiente plantilla para añadir nuevos animes a la web, además de poder ponerlo en diferentes categorías de la aplicación, ya sea en tendencia o en seasonal(o las 2):
+
+<br>
+
 
  ![addanime](imagenes/addanime.PNG)
 
@@ -679,14 +721,76 @@ POSTGRES_DB=hikari_db
 <br>
   
 ### AWS, PROXY INVERSO Y DOMINIO EN .TECH
-- La web en local ha sido desarrollada en Windows, por lo que todo el despliegue a sido desarrollado en una máquina virtual con debian 12, una vez iniciada y configurada toda la máquina virtual, procedemos a entrar al laboratorio de AWS, que tiene un máximo de duración de 4 horas, por lo que a a las 4 horas la instancia se para automaticamente y hay que volver a iniciarla.
+
+<br>
+
+- La web en local ha sido desarrollada en Windows, por lo que todo el despliegue a sido desarrollado en una máquina virtual con debian 12, una vez iniciada y configurada toda la máquina virtual, procedemos a entrar al laboratorio de AWS, que 
+tiene un máximo de duración de 4 horas, por lo que a a las 4 horas la instancia se para automaticamente y hay que volver a iniciarla.
+
+<br>
+
+![aws](imagenes/despliegue/aws.PNG)
+
+<br>
+
 - Una vez dentro de AWS, procedemos a crear una instancia, en mi caso he hecho una instancia con debian 12, con 8gb de ram. Luego procedemos a crear una ip elástica y asociarla con nuestra instancia, el resultado final es tal que así:
--Una vez tengamos nuestra instancia con la ip elástica, nos conectamos a ella mediante ssh.
+
+<br>
+
+![ipelastica](imagenes/despliegue/ipelastica.PNG)
+
+<br>
+
+- Una vez tengamos nuestra instancia con la ip elástica, nos conectamos a ella mediante ssh.
+
+<br>
+
+![ssh](imagenes/despliegue/ssh.PNG)
+
+<br>
+
+
 - Una vez conectada, deberemos crear una carpeta y pasar los archivos docker-compose.yml y el .env.
+  
+<br>
+
+![dc](imagenes/despliegue/dockercompose.PNG)
+
+<br>
+
 - Una vez que tengamos esos archivos procedemos a subir nuestra imagen de docker hub, primero hacemos el login y luego hascemos un docker pull para descargarnos nuestra imagen
+  
+<br>
+
+![pull](imagenes/despliegue/pull.PNG)
+
+<br>
+
+
+
 - Una vez que lo tenemos todo, vamos a tech.domains y accedemos a nuestro dominio, dónde vamos a editar el A record y poner nuestra ip elástica.
+  
+<br>
+
+![arecord](imagenes/despliegue/arecord.PNG)
+
+<br>
+  
 - Ahora realizaremos un proxy inverso con nginx dónde añadiremos nuestra url para que se despliegue nuestra imagen docker.
-- Tras todo eso, podemos obvservar que la web se ha desplegado correctamente 
+  
+<br>
+
+![nginx](imagenes/despliegue/nginx.PNG)
+
+<br>
+
+- Tras todo eso, si accedemos hikarilist.yelardo.tech podemos obvservar que la web se ha desplegado correctamente
+
+<br>
+
+![okey](imagenes/despliegue/okey.PNG)
+
+<br>
 
  
   
