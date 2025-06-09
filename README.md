@@ -85,7 +85,7 @@ http://hikarilist.yelardo.tech
 ### Directorio anime:
 
 - Si pulsamos en directorio anime, nos llevará a una página con todo el catalogo anime que existe en la web.
- ![animes](imagenes/all.PNG)
+ ![all](imagenes/all.PNG)
 
 
   
