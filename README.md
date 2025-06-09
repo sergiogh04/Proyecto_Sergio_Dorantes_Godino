@@ -11,9 +11,9 @@
 - [¿Qué es HikariList?](#qué-es-hikarilist)
 - [¿Cómo funciona la aplicación?](#como-funciona-la-aplicacion)
 - [Tutorial](#TUTORIAL)
-- [Diseño de la app](#diseño-de-la-app)
+- [Diseño de la web](#diseño-de-la-web)
 - [Backend  y panel de administrador](#backend-y-panel-de-administrador)
-- [Despliegue de la aplicación](#despliegue-de-la-aplicación)
+- [Despliegue del proyecto](#despliegue-del-proyecto)
 
 <br>
 
