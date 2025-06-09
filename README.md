@@ -77,6 +77,19 @@ http://hikarilist.yelardo.tech
 - Si pulsamos en cualquier anime, nos aparecerá la información sobre dicho anime, una breve sinopsis y además podremos añadirlo a nuestra lista dependiendo de la categoría en la que lo queramos meter, y podremos añadirle una nota.
  ![detallesanime](imagenes/detallesanime.PNG)
 
+### Perfil:
+
+- Si pulsamos en el botón de perfil, nos llevara a nuestro perfil, donde se nos asignará un avatar por defecto pero podremos cambiarlo, nos pondrá desde cuando somos miembros de la página y tendremos acceso a nuestra biblioteca entera, y podrémos ir viendo todos los animes que hemos añadido y en que estado los tenemos, además de el numero total de animes de cada sección.
+![perfil](imagenes/perfil.PNG)
+
+### Directorio anime:
+
+- Si pulsamos en directorio anime, nos llevará a una página con todo el catalogo anime que existe en la web.
+ ![all](imagenes/todos_los_animes.PNG)
+
+
+  
+
 
 
 
