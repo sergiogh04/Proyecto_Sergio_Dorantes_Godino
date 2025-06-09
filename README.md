@@ -529,16 +529,85 @@ hikarilist.yelardo.tech/admin
   ```python
   hikarilist.yelardo.tech/api/animes
   ````
+     ![useranime](imagenes/apianimes.PNG)
+
+  
 - Además podemos ver también el movimiento de los usuarios desde la api y las notas que les ponen:
     ```python
   hikarilist.yelardo.tech/api/ratings
   ````
+   ![useranime](imagenes/apiusers.PNG)
 
-  
 
 # Despligue del proyecto 
 
+## Cómo se ha realizado el despliegue:
 
+### DOCKER Y DOCKER HUB
+- Dockerizamos nuestro proyecto en local, para ello crearemos el arhivo Dockerfile
+ ```python
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update && apt-get install -y build-essential libpq-dev
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE 8000
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+````
+- Y necesitamos crear también el archivo docker-compose.yml y el .env
+- Ponemos que la base de datos va a ser Postgresql y creamos una imagen para subirla a dockerhub, para que cuando estemos en la instancia de AWS, podamos pullear la imagen docker para lanzarla desde la instancia.
+```python
+
+services:
+  web:
+    image: yelarrdo/hikarilist:latest
+    container_name: hikari_web
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: postgres:15
+    container_name: hikari_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    restart: always
+
+volumes:
+  postgres_data:
+
+````
+- .env:
+```python
+POSTGRES_USER=admin
+POSTGRES_PASSWORD=admin123
+POSTGRES_DB=hikari_db
+
+````
+- Una vez tengamos el proyecto dockerizado y funcione en local, lo subimos a la imagen en docker hub y nos vamos al AWS
+  
+### AWS, PROXY INVERSO Y DOMINIO EN .TECH
   
 
 
