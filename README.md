@@ -1,1 +1,3 @@
-# HikariList, Página de gestión de series anime
+# HikariList, página de gestión de series anime
+
+
