@@ -1,1 +1,1 @@
-# Proyecto_Sergio_Dorantes_Godino
+# HikariList, Página de gestión de series anime
