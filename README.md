@@ -500,6 +500,40 @@ class AnimeSerializer(serializers.ModelSerializer):
 hikarilist.yelardo.tech/admin
 ````
 - Una vez estamos dentro del panel de administración debemos iniciar sesión con un usuario con permisos de staff y veremos lo siguiente:
+
+ ![admin](imagenes/adming.PNG)
+
+ - Pulsando en anime veremos todos los animes que han sido creados con sus características propias.
+
+ ![adming](imagenes/animesadmin.PNG)
+
+ - Si pulsamos en añadir anime tendremos la siguiente plantilla para añadir nuevos animes a la web, además de poder ponerlo en diferentes categorías de la aplicación, ya sea en tendencia o en seasonal(o las 2):
+
+ ![addanime](imagenes/addanime.PNG)
+
+- En el apartado de géneros nos salen todos los generos creados para la web y asignarlo a un anime
+
+   ![generos](imagenes/generos.PNG)
+
+- Si nos vamos al apartado de perfiles, nos apareceran todos los usuarios que tienen un perfil en la web:
+   ![usuarios](imagenes/usuarios.PNG)
+  
+- Desde la parte de User Anime, podremos ver toda la actividad de la página, qué animes eligen los usuarios y las notas que les ponen a los mismos, además del estado y en la fecha que hizo esos movimientos
+
+   ![useranime](imagenes/useranime.PNG)
+
+- Como se puede apreciar, desde el panel de administrador se puede controlar, practicamente casi todo lo que sucede en la aplicación, sin necesidad de acceder a la base de datos para comprobarlo.
+
+### API:
+- La api que he diseñado para la web está hecha por mi utilizando Django Rest framework y consiste en que todos los usuarios pueden puntuar cualquier anime, y de esas puntuaciones se hace una media de las notas y las mejores notas se muestran en la página principal. Para acceder a los datos de la api tenemos que escribir en el navegador la siguiente url:
+  ```python
+  hikarilist.yelardo.tech/api/animes
+  ````
+- Además podemos ver también el movimiento de los usuarios desde la api y las notas que les ponen:
+    ```python
+  hikarilist.yelardo.tech/api/ratings
+  ````
+
   
 
 # Despligue del proyecto 
