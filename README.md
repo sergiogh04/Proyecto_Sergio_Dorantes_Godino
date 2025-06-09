@@ -48,20 +48,39 @@ http://hikarilist.yelardo.tech
 ````
 ## Antes de empezar a hablar del despliegue, el diseño y el backend, voy a hacer un pequeño tutorial muy sencillo de cómo funciona mi web: 
 
-### Una vez despleguemos la web, ya sea en local o desde la url, nos aparecerá lo siguiente:
+### Inicio:
+- Una vez despleguemos la web, ya sea en local o desde la url, nos aparecerá lo siguiente:
 
 ![inicio1](imagenes/inicio.PNG)
 
-### Una vez iniciemos sesión, o nos registremos por primera vez, le deberemos de dar al botón de comenzar:
+
+- Una vez iniciemos sesión, o nos registremos por primera vez, le deberemos de dar al botón de comenzar:
 ![inicio2](imagenes/Captura.PNG)
 
-### Esta es la página principal, donde tendremos siempre a nuestra disposición la barra de navegación, para movernos por la app, además de unas noticias destacadas de la semana y los animes mas destacados de ella.
+
+### Página principal:
+ - Esta es la página principal, donde tendremos siempre a nuestra disposición la barra de navegación, para movernos por la app, además de unas noticias destacadas de la semana y los animes mas destacados de ella.
 ![principal](imagenes/principal.PNG)
 
-### También tendremos la barra de busqueda que nos permitirá buscar el anime que queramos 
+
+ - También tendremos la barra de busqueda que nos permitirá buscar el anime que queramos 
 ![busqueda](imagenes/buscador.PNG)
 
-###
+- Si seguimos bajando tendremos los animes más destacados de esta temporada primavera-verano
+![busqueda](imagenes/emision.PNG)
+
+- Por último tendríamos los animes mejores valorados por los usuarios de la web
+![busqueda](imagenes/mejoresvalorados.PNG)
+
+### Detalles de los animes:
+
+- Si pulsamos en cualquier anime, nos aparecerá la información sobre dicho anime, una breve sinopsis y además podremos añadirlo a nuestra lista dependiendo de la categoría en la que lo queramos meter, y podremos añadirle una nota.
+ ![detallesanime](imagenes/detallesanime.PNG)
+
+
+
+
+  
 
 
 
