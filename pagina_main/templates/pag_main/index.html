@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8" />
+    <title>HikariList</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+     <link rel="stylesheet" href="{% static 'css/search_bar.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet" />
+    <style>
+        .carousel {
+            width: 100vw;
+            height: 300px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+            height: 500px;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 200px;
+            left: 50px;
+            max-width: 600px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide h3 {
+            font-size: 2.5em;
+            margin: 0 0 20px 0;
+            color: #ff6b6b;
+        }
+
+        .slide p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        .controls button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 2em;
+            transition: all 0.3s ease;
+        }
+
+        .controls button:hover {
+            background: rgba(255, 107, 107, 0.8);
+        }
+
+        .prev {
+            left: 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #ff6b6b;
+            transform: scale(1.2);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .carousel {
+                width: 95%;
+            }
+
+            .slide-content {
+                bottom: 20px;
+                left: 20px;
+                right: 20px;
+            }
+
+            .slide h3 {
+                font-size: 1.8em;
+            }
+
+            .slide p {
+                font-size: 1em;
+            }
+        }
+
+    </style>
+</head>
+
+<body class="anime-bg">
+    <header>
+        <a href="{% url 'anime:index' %}">
+            <h1 class="logo">HikariList</h1>
+        </a>
+        <div class="search-wrapper">
+            <input id="search-input" type="text" placeholder="Buscar..." autocomplete="off" />
+            <div id="search-preview"></div>
+        </div>
+        <nav>
+            <a href="{% url 'anime:profile' %}">Perfil</a>
+            <a href="{% url 'anime:home' %}">Inicio</a>
+            <a href="{% url 'anime:allanime' %}">Directorio Anime</a>
+        </nav>
+    </header>
+
+    <div class="carousel">
+        <div class="slides" id="slidesContainer">
+            <!-- Slide 1 -->
+            <div class="slide">
+                <img src="https://wallpapercave.com/wp/wp1956193.jpg" alt="Attack on Titan" />
+                <div class="slide-content">
+                    <h3>Attack on Titan Final</h3>
+                    <p>La épica conclusión llegará este otoño cerrando la saga de Eren y sus aliados.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://wallpapers.com/images/hd/flame-breathing-tanjiro-kimetsu-no-yaiba-yccradgo1cp31hy7.jpg" alt="Demon Slayer" />
+                <div class="slide-content">
+                    <h3>Demon Slayer: Castillo Infinito</h3>
+                    <p>Nueva producción cinematográfica para cerrar el arco final.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://4kwallpapers.com/images/walls/thumbs_3t/9292.jpg" alt="Jujutsu Kaisen" />
+                <div class="slide-content">
+                    <h3>Jujutsu Kaisen Temporada 3</h3>
+                    <p>El nuevo arco del Culling Game en producción para 2025.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="prev" onclick="prevSlide()">❮</button>
+            <button class="next" onclick="nextSlide()">❯</button>
+        </div>
+
+        <div class="indicators" id="indicatorsContainer"></div>
+    </div>
+
+    <h1>Animes en tendencia</h1>
+    <section class="grid">
+        {% for anime in trending %}
+        <article class="card">
+            <a href="{% url 'anime:detail' anime.slug %}">
+                <img src="{{ anime.image }}" alt="{{ anime.title }}" />
+                <h2>{{ anime.title }}</h2>
+                <p>{{ anime.format }} | {{ anime.status }}</p>
+            </a>
+        </article>
+        {% endfor %}
+    </section>
+
+    <h1>Animes en emisión</h1>
+    <section class="grid">
+        {% for anime in seasonal %}
+        <article class="card">
+            <a href="{% url 'anime:detail' anime.slug %}">
+                <img src="{{ anime.image }}" alt="{{ anime.title }}" />
+                <h2>{{ anime.title }}</h2>
+                <p>{{ anime.format }} | {{ anime.status }}</p>
+            </a>
+        </article>
+        {% endfor %}
+    </section>
+
+    <h1>Mejores valorados</h1>
+    <section class="grid">
+        {% for anime in top_rated %}
+        <article class="card">
+            <a href="{% url 'anime:detail' anime.slug %}">
+                <img src="{{ anime.image }}" alt="{{ anime.title }}" />
+                <h2>{{ anime.title }}</h2>
+                <p>⭐ {{ anime.avg|floatformat:1 }}/10</p>
+            </a>
+        </article>
+        {% endfor %}
+    </section>
+
+    <footer>
+        <p>&copy; 2025 HikariList.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('search-input');
+            const preview = document.getElementById('search-preview');
+            const wrapper = document.querySelector('.search-wrapper');
+
+            input.addEventListener('input', () => {
+                const q = input.value.trim();
+                if (!q) {
+                    preview.classList.remove('show');
+                    preview.innerHTML = '';
+                    return;
+                }
+                fetch(`/anime/search/?q=${encodeURIComponent(q)}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        preview.innerHTML = '';
+                        if (data.results.length) {
+                            data.results.forEach(anime => {
+                                const a = document.createElement('a');
+                                a.href = `/anime/${anime.slug}/`;
+                                a.innerHTML = `
+                                <img src="${anime.image}" alt="${anime.title}" />
+                                <span>${anime.title}</span>
+                              `;
+                                preview.appendChild(a);
+                            });
+                        } else {
+                            preview.innerHTML = '<div class="px-2 py-1 text-gray-400 text-sm">Sin resultados</div>';
+                        }
+                        preview.classList.add('show');
+                    })
+                    .catch(() => preview.classList.remove('show'));
+            });
+
+            document.addEventListener('click', e => {
+                if (!wrapper.contains(e.target)) {
+                    preview.classList.remove('show');
+                }
+            });
+        });
+
+        // Carrusel
+        let currentIndex = 0;
+        const slides = document.getElementById('slidesContainer');
+        const totalSlides = document.querySelectorAll('.slide').length;
+        const indicatorsContainer = document.getElementById('indicatorsContainer');
+
+        // Indicadores
+        for (let i = 0; i < totalSlides; i++) {
+            const indicator = document.createElement('div');
+            indicator.className = 'indicator';
+            indicator.addEventListener('click', () => goToSlide(i));
+            indicatorsContainer.appendChild(indicator);
+        }
+
+        function updateSlide() {
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            document.querySelectorAll('.indicator').forEach((ind, idx) => {
+                ind.classList.toggle('active', idx === currentIndex);
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlide();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlide();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlide();
+        }
+
+        setInterval(nextSlide, 6000);
+        updateSlide();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap');
+
+
+body {
+  font-family: 'Chakra Petch', sans-serif;
+  background-size: cover;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  backdrop-filter: blur(2px);
+}
+
+
+.auth-card {
+  background-color: transparent;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 430px;
+  text-align: center;
+}
+
+
+.auth-title {
+  font-size: 2rem;
+  margin-bottom: 2.2rem;
+  color: #ff6b6b;
+  text-shadow: 1px 1px 0 #4ecdc4;
+}
+
+
+.auth-input-group {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.auth-input-group input {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid #4ecdc4;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-family: 'Chakra Petch', sans-serif;
+  outline: none;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.auth-input-group input:focus {
+  border-color: #ffe66d;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+.auth-input-label {
+  position: absolute;
+  top: -1.2rem;
+  left: 0.9rem;
+  background-color: transparent;
+  padding: 0 0.5rem;
+  font-size: 0.85rem;
+  color: #4ecdc4;
+}
+
+
+.auth-input-group .errorlist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+
+.auth-btn {
+  background-color: #4ecdc4;
+  color: #14191f;
+  font-weight: bold;
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+.auth-btn:hover {
+  background-color: #38b7b0;
+  transform: scale(1.03);
+}
+
+
+.auth-links {
+  margin-top: 1.5rem;
+}
+
+.auth-link {
+  color: #ffe66d;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.auth-link:hover {
+  color: #ff6b6b;
+}
+
+
+@media (max-width: 500px) {
+  .auth-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .auth-title {
+    font-size: 1.6rem;
+  }
+
+  .auth-btn {
+    font-size: 0.95rem;
+  }
+}

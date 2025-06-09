@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+  <div class="auth-card">
+    <h2 class="auth-title">INICIO DE SESIÓN</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      <div class="auth-input-group">
+        {{ form.username }}
+        <label class="auth-input-label">Usuario</label>
+      </div>
+      <div class="auth-input-group">
+        {{ form.password }}
+        <label class="auth-input-label">Contraseña</label>
+      </div>
+      <button type="submit" class="auth-btn">ACCEDER AL SISTEMA</button>
+    </form>
+    <div class="auth-links">
+      <a href="{% url 'anime:register' %}" class="auth-link">¿Nuevo guerrero? ¡Únete!</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
