@@ -11,9 +11,9 @@
 - [¿Qué es HikariList?](#qué-es-hikarilist)
 - [¿Cómo funciona la aplicación?](#como-funciona-la-aplicacion)
 - [Tutorial](#TUTORIAL)
-- Diseño de la app
-- Backend, apis y panel de administrador
-- Despliegue de la aplicación
+- [Diseño de la app](#diseño-de-la-app)
+- [Backend  y panel de administrador](#backend-y-panel-de-administrador)
+- [Despliegue de la aplicación](#despliegue-de-la-aplicación)
 
 <br>
 
@@ -164,7 +164,7 @@ http://hikarilist.yelardo.tech
 # Diseño de la web
 <br>
 
-# Backend, apis y panel de administrador de la web 
+# Backend y panel de administrador
 - Esta web ha sido desarrollada en Django, usando un modelo de MVC, mi web está siendo controlada todo desde una misma app, dónde controlo todo lo que ocurre en ella y desde el panel de administración.
   ### Modelos:
   - Aquí estan recogidos todos los modelos de mi aplicación, desde la gestión de todos los animes y la creación de ellos mismos hasta los usuarios y las notas medias.
@@ -682,6 +682,13 @@ POSTGRES_DB=hikari_db
 ### AWS, PROXY INVERSO Y DOMINIO EN .TECH
 - La web en local ha sido desarrollada en Windows, por lo que todo el despliegue a sido desarrollado en una máquina virtual con debian 12, una vez iniciada y configurada toda la máquina virtual, procedemos a entrar al laboratorio de AWS, que tiene un máximo de duración de 4 horas, por lo que a a las 4 horas la instancia se para automaticamente y hay que volver a iniciarla.
 - Una vez dentro de AWS, procedemos a crear una instancia, en mi caso he hecho una instancia con debian 12, con 8gb de ram. Luego procedemos a crear una ip elástica y asociarla con nuestra instancia, el resultado final es tal que así:
+-Una vez tengamos nuestra instancia con la ip elástica, nos conectamos a ella mediante ssh.
+- Una vez conectada, deberemos crear una carpeta y pasar los archivos docker-compose.yml y el .env.
+- Una vez que tengamos esos archivos procedemos a subir nuestra imagen de docker hub, primero hacemos el login y luego hascemos un docker pull para descargarnos nuestra imagen
+- Una vez que lo tenemos todo, vamos a tech.domains y accedemos a nuestro dominio, dónde vamos a editar el A record y poner nuestra ip elástica.
+- Ahora realizaremos un proxy inverso con nginx dónde añadiremos nuestra url para que se despliegue nuestra imagen docker.
+- Tras todo eso, podemos obvservar que la web se ha desplegado correctamente 
+
  
   
 
