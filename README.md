@@ -608,6 +608,9 @@ POSTGRES_DB=hikari_db
 - Una vez tengamos el proyecto dockerizado y funcione en local, lo subimos a la imagen en docker hub y nos vamos al AWS
   
 ### AWS, PROXY INVERSO Y DOMINIO EN .TECH
+- La web en local ha sido desarrollada en Windows, por lo que todo el despliegue a sido desarrollado en una máquina virtual con debian 12, una vez iniciada y configurada toda la máquina virtual, procedemos a entrar al laboratorio de AWS, que tiene un máximo de duración de 4 horas, por lo que a a las 4 horas la instancia se para automaticamente y hay que volver a iniciarla.
+- Una vez dentro de AWS, procedemos a crear una instancia, en mi caso he hecho una instancia con debian 12, con 8gb de ram. Luego procedemos a crear una ip elástica y asociarla con nuestra instancia, el resultado final es tal que así:
+ 
   
 
 
