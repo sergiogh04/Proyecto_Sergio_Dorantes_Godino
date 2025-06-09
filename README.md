@@ -2,11 +2,30 @@
 
 ![miku](imagenes/47tj.gif)
 
+## Creador de la aplicación web:
+- Sergio Dorantes Godino
+
+<br>
+
+## Indice 
+- [¿Qué es HikariList?](#qué-es-hikarilist)
+- [¿Cómo funciona la aplicación?](#como-funciona-la-aplicacion)
+- [Tutorial](#TUTORIAL)
+- Diseño de la app
+- Backend, apis y panel de administrador
+- Despliegue de la aplicación
+
+<br>
+
 ## ¿Qué es HikariList?
 - HikariList es una aplicación de gestíon de series y peliculas animes dónde los usuarios pueden gestionar todas las series que quieran ver o hayan visto y tener su propia biblioteca digital, además de puntuar las obras que haya visto. La aplicación dispone de un ranking con las obras mejores votadas.
 
+<br>
+
 ## ¿En qué destaca HikariList?
 - HikariList destaca en su diseño simple y limpio, destinada a todos esos usuarios que no tienen experiencia en navegar por páginas webs complejas y quieren algo que no requiera mucha dificultad de uso, todos esos amantes de los animes que simplemente quieran disfrutar del anime y controlar todo lo que ven, ¡es su sitio!
+
+<br>
 
 ## ¿Qué tecnologias se han utilizado para desarrollar HikariList?
 - Esta página web tiene su base en el lenguaje de programación python, en el framework de Django.
@@ -14,11 +33,12 @@
 - En la parte de despligue he desplegado mi proyecto utilizando Docker en una instancia AWS asociada a una IP elástica, con un dominio de tech.domains.
 - Para la base de datos he utilizado PostgresSQL
 
-## Creador de la aplicación web:
-- Sergio Dorantes Godino
+
+<br>
 
 ## ¿Cómo funciona la aplicación?
 - Esta aplicación está desplegada con docker en una instancia en AWS y accesible desde la URL hikarilist.yelardo.tech, sin embargo, también podréis acceder a la app instalandola de manera local, voy a proceder a explicar como podéis ejecutar la aplicación web en local:
+
 
  1.- Descargue el código en un .zip y descomprimalo
  
@@ -52,48 +72,97 @@ http://localhost:8000/
 http://hikarilist.yelardo.tech
 
 ````
+<br>
+
+# Tutorial
+
 ## Antes de empezar a hablar del despliegue, el diseño y el backend, voy a hacer un pequeño tutorial muy sencillo de cómo funciona mi web: 
+
+<br>
 
 ### Inicio:
 - Una vez despleguemos la web, ya sea en local o desde la url, nos aparecerá lo siguiente:
+<br>
+
 
 ![inicio1](imagenes/inicio.PNG)
 
+<br>
+
 
 - Una vez iniciemos sesión, o nos registremos por primera vez, le deberemos de dar al botón de comenzar:
+<br>
+
 ![inicio2](imagenes/Captura.PNG)
+
+<br>
+
 
 
 ### Página principal:
  - Esta es la página principal, donde tendremos siempre a nuestra disposición la barra de navegación, para movernos por la app, además de unas noticias destacadas de la semana y los animes mas destacados de ella.
+   <br>
+
 ![principal](imagenes/principal.PNG)
+<br>
 
 
- - También tendremos la barra de busqueda que nos permitirá buscar el anime que queramos 
+
+ - También tendremos la barra de busqueda que nos permitirá buscar el anime que queramos
+
+<br>
+
 ![busqueda](imagenes/buscador.PNG)
 
+<br>
+
+
 - Si seguimos bajando tendremos los animes más destacados de esta temporada primavera-verano
+
+<br>
+
+
 ![busqueda](imagenes/emision.PNG)
 
+<br>
+
+
 - Por último tendríamos los animes mejores valorados por los usuarios de la web
+<br>
+
 ![busqueda](imagenes/mejoresvalorados.PNG)
+<br>
+
 
 ### Detalles de los animes:
 
 - Si pulsamos en cualquier anime, nos aparecerá la información sobre dicho anime, una breve sinopsis y además podremos añadirlo a nuestra lista dependiendo de la categoría en la que lo queramos meter, y podremos añadirle una nota.
+<br>
+
  ![detallesanime](imagenes/detallesanime.PNG)
+<br>
 
 ### Perfil:
 
 - Si pulsamos en el botón de perfil, nos llevara a nuestro perfil, donde se nos asignará un avatar por defecto pero podremos cambiarlo, nos pondrá desde cuando somos miembros de la página y tendremos acceso a nuestra biblioteca entera, y podrémos ir viendo todos los animes que hemos añadido y en que estado los tenemos, además de el numero total de animes de cada sección.
+<br>
+
 ![perfil](imagenes/perfil.PNG)
+<br>
+
 
 ### Directorio anime:
 
 - Si pulsamos en directorio anime, nos llevará a una página con todo el catalogo anime que existe en la web.
+<br>
+
  ![all](imagenes/2.PNG)
+<br>
+<br>
+
 
 # Diseño de la web
+<br>
 
 # Backend, apis y panel de administrador de la web 
 - Esta web ha sido desarrollada en Django, usando un modelo de MVC, mi web está siendo controlada todo desde una misma app, dónde controlo todo lo que ocurre en ella y desde el panel de administración.
@@ -606,6 +675,8 @@ POSTGRES_DB=hikari_db
 
 ````
 - Una vez tengamos el proyecto dockerizado y funcione en local, lo subimos a la imagen en docker hub y nos vamos al AWS
+
+<br>
   
 ### AWS, PROXY INVERSO Y DOMINIO EN .TECH
 - La web en local ha sido desarrollada en Windows, por lo que todo el despliegue a sido desarrollado en una máquina virtual con debian 12, una vez iniciada y configurada toda la máquina virtual, procedemos a entrar al laboratorio de AWS, que tiene un máximo de duración de 4 horas, por lo que a a las 4 horas la instancia se para automaticamente y hay que volver a iniciarla.
