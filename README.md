@@ -48,6 +48,9 @@ http://hikarilist.yelardo.tech
 ````
 ## Antes de empezar a hablar del despliegue, el diseño y el backend, voy a hacer un pequeño tutorial muy sencillo de cómo funciona mi web: 
 
+### Una vez despleguemos la web, ya sea en local o desde la url, nos aparecerá lo siguiente:
+
+![miku](imagenes/47tj.gif)
 
  
 
