@@ -2,8 +2,7 @@
 
 ![miku](imagenes/47tj.gif)
 
-## Creador de la aplicación web:
-- Sergio Dorantes Godino
+
 
 <br>
 
