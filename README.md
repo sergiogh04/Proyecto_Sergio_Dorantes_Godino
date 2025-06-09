@@ -494,7 +494,13 @@ class AnimeSerializer(serializers.ModelSerializer):
 
 
 ````
-
+### PANEL DE ADMINISTRADOR:
+- Dede el panel de administrador puedo tener control total de todo lo que hacen los usuarios en mi web, además de crear nuevos registros y perfiles, la url para acceder al panel de administración es:
+```python
+hikarilist.yelardo.tech/admin
+````
+- Una vez estamos dentro del panel de administración debemos iniciar sesión con un usuario con permisos de staff y veremos lo siguiente:
+  
 
 # Despligue del proyecto 
 
