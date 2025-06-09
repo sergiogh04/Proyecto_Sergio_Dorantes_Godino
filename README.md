@@ -186,7 +186,7 @@ class UserAnime(models.Model):
 
 ````
 ### Views:
-- Aquí esta la mayor parte de la lógica de la web, 
+- Aquí esta la mayor parte de la lógica de la web, cómo funciona el sistema de biblioteca digital, el inicio de sesión, el buscado y la api para las notas medias de los animes.
 ```python
 
 from django.shortcuts import render, redirect, get_object_or_404
@@ -332,6 +332,165 @@ class UserAnimeViewSet(viewsets.ModelViewSet):
 def all_anime_view(request):
     all_animes = Anime.objects.all().order_by('title')
     return render(request, 'pag_main/all_anime.html', {'all_animes': all_animes})
+
+
+````
+
+### URLS:
+
+```python
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('anime/', include(('pagina_main.urls', 'anime'), namespace='anime')),  # Namespace correcto
+    path('', include('pagina_main.urls')),  # Esto SIEMPRE debe ir al final
+]
+
+````
+
+### URLS APP:
+```python
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from . import views
+from .views import AnimeViewSet, UserAnimeViewSet  # <-- IMPORTANTE
+
+app_name = 'anime'
+
+router = DefaultRouter()
+router.register(r'animes', AnimeViewSet, basename='anime')
+router.register(r'ratings', UserAnimeViewSet, basename='rating')
+
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('register/', views.register_view, name='register'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+    path('list/', views.anime_index, name='index'),
+    path('profile/', views.profile_view, name='profile'),
+    path('search/', views.anime_search, name='anime_search'),
+    path('allanime/', views.all_anime_view, name='allanime'),
+
+    path('<slug:slug>/', views.anime_detail, name='detail'),
+
+    path('api/', include(router.urls)),  # <-- Necesario para acceder a /api/animes y /api/ratings
+
+
+]
+
+````
+### FORMS:
+```python
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
+from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+
+class UserRegisterForm(UserCreationForm):
+    email = forms.EmailField(required=True, help_text="Requerido. Ingresa un correo válido.")
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+
+````
+### SIGNALS:
+```python
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.contrib.auth.models import User
+from .models import Profile
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+
+````
+### ADMIN:
+```python
+from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
+from django.utils.safestring import mark_safe
+
+from .models import (
+    Anime,Genre,UserAnime,Profile
+)
+
+@admin.register(Anime)
+class AnimeAdmin(admin.ModelAdmin):
+    list_display = ('title', 'format', 'status', 'year', 'is_trending', 'is_seasonal')
+    list_filter = ('format', 'status', 'year', 'is_trending', 'is_seasonal')
+    search_fields = ('title',)
+    prepopulated_fields = {'slug': ('title',)}
+    list_editable = ('is_trending', 'is_seasonal')
+
+@admin.register(UserAnime)
+class UserAnimeAdmin(admin.ModelAdmin):
+    list_display = ('user', 'anime', 'status', 'score', 'added_at')
+    list_filter = ('status',)
+    search_fields = ('user__username', 'anime__title')
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'avatar')
+
+admin.site.register(Genre)
+
+
+````
+### API(SERIALIZERS):
+
+```python
+from rest_framework import serializers
+from django.db.models import Avg
+from .models import Anime, UserAnime
+
+class UserAnimeSerializer(serializers.ModelSerializer):
+    anime = serializers.SlugRelatedField(
+        slug_field='slug',
+        queryset=Anime.objects.all()
+    )
+
+    class Meta:
+        model = UserAnime
+        fields = ['id', 'anime', 'status', 'score']
+        read_only_fields = ['id']
+
+    def create(self, validated_data):
+        validated_data['user'] = self.context['request'].user
+        instance, created = UserAnime.objects.update_or_create(
+            user=validated_data['user'],
+            anime=validated_data['anime'],
+            defaults={
+                'status': validated_data.get('status', 'plan_to_watch'),
+                'score': validated_data.get('score', None),
+            }
+        )
+        return instance
+
+    def update(self, instance, validated_data):
+        validated_data.pop('user', None)  # No permitir cambiar el usuario
+        return super().update(instance, validated_data)
+
+
+class AnimeSerializer(serializers.ModelSerializer):
+    avg_score = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Anime
+        fields = ['id', 'title', 'slug', 'image', 'format', 'status', 'avg_score']
+
+    def get_avg_score(self, obj):
+        avg = obj.user_animes.filter(score__isnull=False).aggregate(average=Avg('score'))['average']
+        return round(avg, 2) if avg is not None else None
 
 
 ````
