@@ -1,3 +1,3 @@
 # HikariList, página de gestión de series anime
 
-![portada](imágnes/Portada.png)
+![portada](imagenes/Portada.png)
