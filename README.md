@@ -5,7 +5,7 @@
 
 <br>
 
-## Indice 
+## Índice 
 - [¿Qué es HikariList?](#qué-es-hikarilist)
 - [¿Cómo funciona la aplicación?](#cómo-funciona-la-aplicación)
 - [Tutorial](#TUTORIAL)
