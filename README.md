@@ -185,6 +185,391 @@ http://hikarilist.yelardo.tech
   ```python
   #ff6b6b
   ````
+<br>
+
+- El css principal de la aplicación:
+
+<br>
+
+  ```python
+  @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap');
+
+  body {
+      font-family: 'Chakra Petch', sans-serif;
+      background-color: #0b0e14;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+  }
+  
+  .anime-bg {
+      background-color: #14191f;
+      min-height: 100vh;
+  }
+  
+  header {
+      background-color: #14191f;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #2c3e50;
+  }
+  
+  header h1 {
+      font-size: 2rem;
+      color: #4ecdc4;
+      margin: 0;
+  }
+  
+  header nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1rem;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+  }
+  
+  header nav a:hover {
+      color: #4ecdc4;
+  }
+  
+  header nav .search-wrapper {
+      margin-right: 1rem;
+      order: 0;
+      width: 170px;
+  }
+  
+  .logo {
+      color: #ff6b6b;
+      display: inline-block;
+      transform: rotate(-3deg);
+      margin-right: 25px;
+      text-shadow:
+          3px 3px 0 #4ecdc4,
+          6px 6px 0 #ffe66d,
+          0 0 30px rgba(255,107,107,0.8);
+      animation: float 3s ease-in-out infinite;
+  }
+  
+  .grid,
+  section.grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      margin: 0 1rem;
+  }
+  
+  .card {
+      background: #1c2129;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+      transform: scale(1.05);
+  }
+  
+  .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+  }
+  
+  .card h2 {
+      font-size: 1.2rem;
+      margin: 0.8rem 0 0.4rem 0;
+      padding: 0 1rem;
+      color: #ff6b6b;
+  }
+  
+  .card p {
+      font-size: 0.9rem;
+      color: #ccc;
+      padding: 0 1rem 1rem;
+  }
+  
+  .anime-detail {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 2rem;
+      background-color: #0f131a;
+  }
+  
+  .anime-detail img {
+      width: 300px;
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  }
+  
+  .anime-detail div {
+      max-width: 600px;
+  }
+  
+  .anime-detail p {
+      margin: 0.5rem 0;
+      line-height: 1.5;
+      color: #c7d2e2;
+  }
+  
+  .anime-detail strong {
+      color: #4ecdc4;
+  }
+  
+  h1 {
+      margin: 2rem 1rem 1rem 3rem;
+  }
+  
+  #search-input,
+  #search-preview {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 1rem;
+  }
+  
+  .add-list-form {
+      margin: 2rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #1c2129;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      max-width: 420px;
+      font-weight: 700;
+      color: #ff6b6b;
+      justify-content: space-between;
+  }
+  
+  .add-list-form label {
+      font-size: 1rem;
+      color: #4ecdc4;
+      white-space: nowrap;
+      flex-shrink: 0;
+      min-width: 120px;
+  }
+  
+  .add-list-form select {
+      flex-grow: 1;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: none;
+      background-color: #14191f;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+  }
+  
+  .add-list-form select:hover,
+  .add-list-form select:focus {
+      background-color: #4ecdc4;
+      color: #14191f;
+      outline: none;
+  }
+  
+  .add-list-form button {
+      padding: 0.5rem 1.5rem;
+      background: #ff6b6b;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      flex-shrink: 0;
+  }
+  
+  .add-list-form button:hover {
+      background-color: #e05a5a;
+      box-shadow:
+          0 0 12px #e05a5a,
+          0 0 30px #e05a5a;
+  }
+  
+  
+  #rating-section {
+      margin: 2rem 2rem;
+      background: #1c2129;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      max-width: 420px;
+      color: #4ecdc4;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+  }
+  
+  #rating-section p#avg-score {
+      margin: 0 1rem 0 0;
+      font-size: 1.1rem;
+      flex: 1 1 100%;
+  }
+  
+  #rating-section label {
+      margin-right: 0.5rem;
+      font-weight: 700;
+      flex-shrink: 0;
+  }
+  
+  #score-input {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: none;
+      background-color: #14191f;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+  }
+  
+  #score-input:hover,
+  #score-input:focus {
+      background-color: #4ecdc4;
+      color: #14191f;
+      outline: none;
+  }
+  
+  #submit-score {
+      padding: 0.5rem 1.5rem;
+      background: #ff6b6b;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-left: 0.5rem;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #submit-score:hover {
+      background-color: #e05a5a;
+      box-shadow:
+          0 0 12px #e05a5a,
+          0 0 30px #e05a5a;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+      header {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 1rem;
+      }
+
+    header nav {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    header nav a {
+        margin: 0;
+        font-size: 0.95rem;
+        flex: 1 1 auto;
+        text-align: center;
+    }
+
+    header nav .search-wrapper {
+        order: 2;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .grid,
+    section.grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .anime-detail {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .anime-detail div {
+        max-width: 100%;
+        text-align: center;
+        padding: 0 1rem;
+    }
+
+    .anime-detail img {
+        width: 100%;
+        max-width: 300px;
+    }
+    }
+    
+    @media (max-width: 576px) {
+        .grid,
+        section.grid {
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+    .card h2 {
+        font-size: 1rem;
+        padding: 0 0.75rem;
+    }
+
+    .card p {
+        font-size: 0.85rem;
+        padding: 0 0.75rem 0.75rem;
+    }
+
+    .add-list-form,
+    #rating-section {
+        flex-direction: column;
+        max-width: 100%;
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .add-list-form label,
+    .add-list-form select,
+    .add-list-form button,
+    #score-input,
+    #submit-score {
+        width: 100%;
+    }
+
+    #rating-section label {
+        width: 100%;
+        margin-bottom: 0.25rem;
+    }
+
+    #rating-section p#avg-score {
+        font-size: 1rem;
+        margin: 0 0 0.5rem;
+    }
+
+    #submit-score {
+        margin-left: 0;
+        margin-top: 0.75rem;
+        width: 100%;
+    }
+}
+
+  ````
+
 
 <br>
 
@@ -237,10 +622,348 @@ http://hikarilist.yelardo.tech
       padding: 0 1rem 1rem;
   }
   ````
+
 <br>
 
+- La sección de noticias está hecha con carrousel de imágenes:
+  ```python
+     <div class="carousel">
+        <div class="slides" id="slidesContainer">
+            <div class="slide">
+                <img src="https://wallpapercave.com/wp/wp1956193.jpg" alt="Attack on Titan" />
+                <div class="slide-content">
+                    <h3>Attack on Titan Final</h3>
+                    <p>La épica conclusión llegará este otoño cerrando la saga de Eren y sus aliados.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://wallpapers.com/images/hd/flame-breathing-tanjiro-kimetsu-no-yaiba-yccradgo1cp31hy7.jpg" alt="Demon Slayer" />
+                <div class="slide-content">
+                    <h3>Demon Slayer: Castillo Infinito</h3>
+                    <p>Nueva producción cinematográfica para cerrar el arco final.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://4kwallpapers.com/images/walls/thumbs_3t/9292.jpg" alt="Jujutsu Kaisen" />
+                <div class="slide-content">
+                    <h3>Jujutsu Kaisen Temporada 3</h3>
+                    <p>El nuevo arco del Culling Game en producción para 2025.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="prev" onclick="prevSlide()">❮</button>
+            <button class="next" onclick="nextSlide()">❯</button>
+        </div>
+
+        <div class="indicators" id="indicatorsContainer"></div>
+    </div>
+
+  ````
+  <br>
+
+- Detalles de un anime
+
+<br>
+
+  ```python
+    <!DOCTYPE html>
+  <html lang="es">
+  {% load static %}
+  <head>
+      <meta charset="UTF-8" />
+      <title>{{ anime.title }} - HikariList</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+       <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+      <link rel="stylesheet" href="{% static 'css/search_bar.css' %}" />
+      <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet" />
+      <style>
+          .add-list-form {
+              margin-top: 1.5rem;
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+          }
+          .add-list-form select {
+              padding: 0.5rem;
+          }
+          .add-list-form button {
+              padding: 0.5rem 1rem;
+              background: #ff6b6b;
+              color: #fff;
+              border: none;
+              cursor: pointer;
+          }
+      </style>
+  </head>
+  
+  <body class="anime-bg">
+      <header>
+          <a href="{% url 'anime:index' %}">
+              <h1 class="logo">HikariList</h1>
+          </a>
+           <div class="search-wrapper">
+              <input id="search-input" type="text" placeholder="Buscar..." autocomplete="off" />
+              <div id="search-preview"></div>
+          </div>
+         <nav>
+              <a href="{% url 'anime:profile' %}">Perfil</a>
+              <a href="{% url 'anime:index' %}">Inicio</a>
+              <a href="{% url 'anime:allanime' %}">Directorio Anime</a>
+          </nav>
+      </header>
+      <section class="anime-detail">
+          <img src="{{ anime.image }}" alt="{{ anime.title }}" />
+          <div>
+              <h2 style="color:  #ff6b6b;">{{ anime.title }}</h2>
+              <p><strong>Estado:</strong> {{ anime.status }}</p>
+              <p><strong>Formato:</strong> {{ anime.format }}</p>
+              <p>
+                  <strong>Géneros:</strong>
+                  {% for genre in anime.genres.all %}
+                      <span
+                          style="background-color: #ff6b6b; color: white; padding: 0.2rem 0.5rem; margin: 0.2rem; border-radius: 0.3rem;">
+                          {{ genre.name }}
+                      </span>
+                  {% endfor %}
+              </p>
+              <p><strong>Sinopsis:</strong></p>
+              <p>{{ anime.description }}</p>
+          </div>
+      </section>
+      <form method="post" class="add-list-form">
+          {% csrf_token %}
+          <label for="status">Añadir a mi lista:</label>
+          <select name="status" id="status">
+              {% for code, label in status_choices %}
+                  <option value="{{ code }}" {% if user_anime and user_anime.status == code %}selected{% endif %}>
+                      {{ label }}
+                  </option>
+              {% endfor %}
+          </select>
+          <button type="submit">Guardar</button>
+      </form>
+      <div id="rating-section">
+          <p id="avg-score">
+              {% if avg_score %}
+                  Nota media: {{ avg_score }}
+              {% else %}
+                  Este anime aún no tiene puntuaciones.
+              {% endif %}
+          </p>
+          {% if user.is_authenticated %}
+              <label for="score-input">Tu nota:</label>
+              <select id="score-input">
+                  <option value="">—</option>
+                  {% for i in score_range %}
+                      <option value="{{ i }}" {% if user_anime.score == i %}selected{% endif %}>{{ i }}</option>
+                  {% endfor %}
+              </select>
+              <button id="submit-score">Enviar nota</button>
+          {% else %}
+              <p><a href="{% url 'anime:login' %}">Inicia sesión</a> para puntuar.</p>
+          {% endif %}
+      </div>
+       <footer>
+          <p>&copy; 2025 HikariList.</p>
+      </footer>
+
+  ````
+
+<br>
+
+- Perfil:
+
+<br>
+
+```python
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search_bar.css' %}" />
+</head>
+<body class="anime-bg">
+    <header>
+         <a href="{% url 'anime:index' %}"><h1 class="logo">HikariList</h1></a>
+         <div class="search-wrapper">
+            <input id="search-input" type="text" placeholder="Buscar..." autocomplete="off" />
+            <div id="search-preview"></div>
+        </div>
+        <nav>
+            <a href="{% url 'anime:home' %}">Inicio</a>
+            <a href="{% url 'anime:profile' %}">Perfil</a>
+            <a href="{% url 'anime:logout' %}">Cerrar Sesión</a>
+
+        </nav>
+    </header>
+    <div class="anime-bg profile-container">
+        <a href="{% url 'anime:index' %}" class="back-to-index">
+            <span class="arrow">❮</span> Volver al Inicio
+        </a>
+
+        <section class="profile-header">
+            <div class="avatar-card">
+                <div class="avatar-wrapper">
+                    {% if profile.avatar %}
+                        <img src="{{ profile.avatar.url }}" alt="{{ user.username }}">
+                    {% else %}
+                        <img src="{% static 'images/375161.png' %}" style="width: 150%; height: auto; display: block;" alt="Avatar por defecto">
+                    {% endif %}
+                </div>
+                <form method="post" enctype="multipart/form-data" action="{% url 'anime:profile' %}">
+                    {% csrf_token %}
+                    <label class="upload-btn">
+                        Cambiar avatar
+                        <input type="file" name="avatar" onchange="this.form.submit()" hidden>
+                    </label>
+                </form>
+            </div>
+
+            <div class="profile-info">
+                <h2>{{ user.username }}</h2>
+                <p>Miembro desde: {{ user.date_joined|date:"d M Y" }}</p>
+            </div>
+        </section>
+
+        <div class="profile-main">
+            <aside class="status-nav">
+                <ul class="status-tabs">
+                    {% for code, label in status_choices %}
+                        <li data-status="{{ code }}" onclick="showTab('{{ code }}')">{{ label }}</li>
+                    {% endfor %}
+                </ul>
+            </aside>
+
+            <section class="anime-lists">
+                {% for code, label, animes in grouped_animes %}
+                    <div class="anime-group" id="group-{{ code }}">
+                        <div class="list-header">
+                            <h3>{{ label }}</h3>
+                            <span>{{ animes|length }} animes</span>
+                        </div>
+
+                        {% if animes %}
+                            <div class="grid">
+                                {% for ua in animes %}
+                                    <a href="{% url 'anime:detail' ua.anime.slug %}" class="card">
+                                        <div class="anime-card">
+                                            <img src="{{ ua.anime.image }}" alt="{{ ua.anime.title }}">
+                                            <div class="anime-info">
+                                                <h4>{{ ua.anime.title }}</h4>
+                                                <p>{{ ua.anime.format }} • {{ ua.anime.status }}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="empty-state">
+                                <p>No tienes animes en esta categoría</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </section>
+        </div>
+    </div>
+     <footer>
+        <p>&copy; 2025 HikariList.</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            showTab('{{ grouped_animes.0.0 }}');
+            const defaultTab = document.querySelector(`[data-status="{{ grouped_animes.0.0 }}"]`);
+            if (defaultTab) {
+                defaultTab.classList.add('active');
+            }
+        }
+
+        function showTab(status) {
+            document.querySelectorAll('.anime-group').forEach(group => {
+                group.style.display = 'none';
+            });
+
+            const activeGroup = document.getElementById(`group-${status}`);
+            if (activeGroup) {
+                activeGroup.style.display = 'block';
+            }
+
+            document.querySelectorAll('.status-tabs li').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            const activeTab = document.querySelector(`[data-status="${status}"]`);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('search-input');
+            const preview = document.getElementById('search-preview');
+            const wrapper = document.querySelector('.search-wrapper');
+
+            input.addEventListener('input', () => {
+                const q = input.value.trim();
+                if (!q) {
+                    preview.classList.remove('show');
+                    preview.innerHTML = '';
+                    return;
+                }
+                fetch(`/anime/search/?q=${encodeURIComponent(q)}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        preview.innerHTML = '';
+                        if (data.results.length) {
+                            data.results.forEach(anime => {
+                                const a = document.createElement('a');
+                                a.href = `/anime/${anime.slug}/`;
+                                a.innerHTML = `
+                                <img src="${anime.image}" alt="${anime.title}" />
+                                <span>${anime.title}</span>
+                              `;
+                                preview.appendChild(a);
+                            });
+                        } else {
+                            preview.innerHTML = '<div class="px-2 py-1 text-gray-400 text-sm">Sin resultados</div>';
+                        }
+                        preview.classList.add('show');
+                    })
+                    .catch(() => preview.classList.remove('show'));
+            });
+
+            document.addEventListener('click', e => {
+                if (!wrapper.contains(e.target)) {
+                    preview.classList.remove('show');
+                }
+            });
+        });
+
+
+    </script>
+
+</body>
+</html>
+
+````
+
+<br>
+
+
 # Backend y panel de administrador
-- Esta web ha sido desarrollada en Django, usando un modelo de MVC, mi web está siendo controlada todo desde una misma app, dónde controlo todo lo que ocurre en ella y desde el panel de administración.
+- Esta web ha sido desarrollada en Django, usando un modelo de MVC, mi web está siendo controlada todo desde una misma app, dónde controlo todo lo que ocurre en ella desde el panel de administración.
   ### Modelos:
   - Aquí estan recogidos todos los modelos de mi aplicación, desde la gestión de todos los animes y la creación de ellos mismos hasta los usuarios y las notas medias.
  ```python
@@ -865,6 +1588,8 @@ tiene un máximo de duración de 4 horas, por lo que a a las 4 horas la instanci
 
 <br>
 
+
+# FIN DE LA DOCUMENTACIÓN
  
   
 
