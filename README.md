@@ -3,10 +3,6 @@
 ![inicio2](imagenes/Portada.PNG)
 
 
-![miku](imagenes/47tj.gif)
-
-
-
 <br>
 
 ## Indice 
@@ -1592,7 +1588,9 @@ tiene un máximo de duración de 4 horas, por lo que a a las 4 horas la instanci
 <br>
 
 
-# FIN DE LA DOCUMENTACIÓN
+# FIN DE LA DOCUMENTACIÓN 
+![miku](imagenes/47tj.gif)
+
  
   
 
