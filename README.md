@@ -11,7 +11,7 @@
 
 ## Indice 
 - [¿Qué es HikariList?](#qué-es-hikarilist)
-- [¿Cómo funciona la aplicación?](#cómo-funciona-la-aplicacion)
+- [¿Cómo funciona la aplicación?](#cómo-funciona-la-aplicación)
 - [Tutorial](#TUTORIAL)
 - [Diseño de la web](#diseño-de-la-web)
 - [Backend  y panel de administrador](#backend-y-panel-de-administrador)
