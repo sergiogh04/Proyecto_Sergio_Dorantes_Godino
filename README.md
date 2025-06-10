@@ -1,5 +1,8 @@
  # HikariList, página de gestión de series anime
 
+![inicio2](imagenes/Portada.PNG)
+
+
 ![miku](imagenes/47tj.gif)
 
 
