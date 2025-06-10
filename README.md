@@ -162,8 +162,81 @@ http://hikarilist.yelardo.tech
 
 # Diseño de la web
 
+<br>
+
 - Para el diseño de la web, he utilizado html, css, boostrap y javascript.
 
+<br>
+
+- La font principal de la página la he cogido de google fonts:
+
+<br>
+
+  ```python
+  https://fonts.google.com/specimen/Chakra+Petch
+  ````
+
+<br>
+
+- El color predominante de la web y utilizado en la mayor parte de ella es el siguiente:
+
+<br>
+
+  ```python
+  #ff6b6b
+  ````
+
+<br>
+
+- La página sigue un diseño de cards para mostrar los animes tanto en la página principal, como en el perfil y en el directorio anime:
+
+<br>
+
+  ```python
+  <h1>Animes en emisión</h1>
+    <section class="grid">
+        {% for anime in seasonal %}
+        <article class="card">
+            <a href="{% url 'anime:detail' anime.slug %}">
+                <img src="{{ anime.image }}" alt="{{ anime.title }}" />
+                <h2>{{ anime.title }}</h2>
+                <p>{{ anime.format }} | {{ anime.status }}</p>
+            </a>
+        </article>
+        {% endfor %}
+    </section>
+    
+  .card {
+      background: #1c2129;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+      transform: scale(1.05);
+  }
+  
+  .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+  }
+  
+  .card h2 {
+      font-size: 1.2rem;
+      margin: 0.8rem 0 0.4rem 0;
+      padding: 0 1rem;
+      color: #ff6b6b;
+  }
+  
+  .card p {
+      font-size: 0.9rem;
+      color: #ccc;
+      padding: 0 1rem 1rem;
+  }
+  ````
 <br>
 
 # Backend y panel de administrador
