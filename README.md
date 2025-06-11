@@ -37,6 +37,7 @@
 ## ¿Cómo funciona la aplicación?
 - Esta aplicación está desplegada con docker en una instancia en AWS y accesible desde la URL hikarilist.yelardo.tech, sin embargo, también podréis acceder a la app instalandola de manera local, voy a proceder a explicar como podéis ejecutar la aplicación web en local:
 
+- Para utilizarlo en local debes poner el DEBUG=True para que se carguen los archivos estáticos en settings.py
 
  1.- Descargue el código en un .zip y descomprimalo
  
